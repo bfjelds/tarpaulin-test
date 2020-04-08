@@ -1,0 +1,13 @@
+/home/bfjelds/tarpaulin-test
+/home/bfjelds/tarpaulin-test/one
+/home/bfjelds/tarpaulin-test/one/Cargo.toml
+/home/bfjelds/tarpaulin-test/one/src
+/home/bfjelds/tarpaulin-test/one/src/main.rs
+/home/bfjelds/tarpaulin-test/Cargo.toml
+/home/bfjelds/tarpaulin-test/two
+/home/bfjelds/tarpaulin-test/two/Cargo.toml
+/home/bfjelds/tarpaulin-test/two/src
+/home/bfjelds/tarpaulin-test/two/src/main.rs
+/home/bfjelds/tarpaulin-test/files
+/home/bfjelds/tarpaulin-test/files/contents.txt
+/home/bfjelds/tarpaulin-test/Cargo.lock
