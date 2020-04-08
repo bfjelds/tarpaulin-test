@@ -68,7 +68,8 @@ note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
 failures:
     test::test_file_access
 
-test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out```
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out
+```
 ### Imitating Azure DevOps
 ```bash
 $ sudo docker create --security-opt seccomp=unconfined -v "${PWD}:/volume" xd009642/tarpaulin:latest bash -c "echo 'sleep 60m; echo bye' > /tmp/keep_alive.sh; chmod 777 /tmp/keep_alive.sh; /tmp/keep_alive.sh" > container_id.txt
