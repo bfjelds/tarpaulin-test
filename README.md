@@ -25,8 +25,51 @@ test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out
 ```
 
 ## cargo tarpaulin
-Running tarpaulin from a container fails:
+Running tarpaulin from a container fails.
+### Simple case
+```bash
+$ sudo docker run --security-opt seccomp=unconfined -v "${PWD}:/volume" xd009642/tarpaulin:latest
+    Finished dev [unoptimized + debuginfo] target(s) in 0.01s
+[INFO tarpaulin] Creating config
+[INFO tarpaulin] Running Tarpaulin
+[INFO tarpaulin] Building project
+[INFO tarpaulin] Launching test
+[INFO tarpaulin] running /volume/target/debug/two-16aba7f3436ab4af
 
+running 1 test
+test test::test_file_access ... FAILED
+
+failures:
+
+---- test::test_file_access stdout ----
+thread 'test::test_file_access' panicked at 'unable to find test file: ../files/contents.txt: Os { code: 2, kind: NotFound, message: "No such file or directory" }', two/src/main.rs:11:25
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    test::test_file_access
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out
+
+[INFO tarpaulin] Launching test
+[INFO tarpaulin] running /volume/target/debug/one-3a019f29a35048d3
+
+running 1 test
+Error: "Test failed during run"
+test test::test_file_access ... FAILED
+
+failures:
+
+---- test::test_file_access stdout ----
+thread 'test::test_file_access' panicked at 'unable to find test file: ../files/contents.txt: Os { code: 2, kind: NotFound, message: "No such file or directory" }', one/src/main.rs:11:25
+note: run with `RUST_BACKTRACE=1` environment variable to display a backtrace
+
+
+failures:
+    test::test_file_access
+
+test result: FAILED. 0 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out```
+### Imitating Azure DevOps
 ```bash
 $ sudo docker create --security-opt seccomp=unconfined -v "${PWD}:/volume" xd009642/tarpaulin:latest bash -c "echo 'sleep 60m; echo bye' > /tmp/keep_alive.sh; chmod 777 /tmp/keep_alive.sh; /tmp/keep_alive.sh" > container_id.txt
 
